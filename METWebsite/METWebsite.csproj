@@ -125,12 +125,9 @@
     <Content Include="AdminRemoveAlumni.aspx" />
     <Content Include="AdminRemoveCourse.aspx" />
     <Content Include="AdminRemoveInstructor.aspx" />
+    <Content Include="AdminRemoveInstructorFromCourse.aspx" />
     <Content Include="AdminRemoveStudentActivity.aspx" />
     <Content Include="AdminStudentActivity.aspx" />
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\database2.mdf" />
     <Content Include="App_Data\database2_log.ldf">
       <DependentUpon>database2.mdf</DependentUpon>
@@ -155,6 +152,7 @@
     <Content Include="fonts\ArbFONTS-Tanseek-Modern-Pro-Arabic-Bold.ttf" />
     <Content Include="fonts\Tanseek Modern Pro Arabic.ttf" />
     <Content Include="CourseHomePage.aspx" />
+    <Content Include="images\adminImages\DefinedWeeksLabel.PNG" />
     <Content Include="images\ErrorIcon.png" />
     <Content Include="LecturersProfiles.aspx" />
     <Content Include="StudentActivityProfile.aspx" />
@@ -162,6 +160,7 @@
     <Content Include="StyleSheets\AdminInstructorToCourse.css" />
     <Content Include="StyleSheets\AdminRemoveAlumni.css" />
     <Content Include="StyleSheets\AdminRemoveCourse.css" />
+    <Content Include="StyleSheets\AdminRemoveInstructorFromCourse.css" />
     <Content Include="StyleSheets\AdminRemoveStudentActivity.css" />
     <Content Include="StyleSheets\HomePage.css" />
     <Content Include="HomePage.aspx" />
@@ -172,6 +171,8 @@
     <Content Include="StyleSheets\AboutUsPage.css" />
     <Content Include="StyleSheets\StudentActivityProfile.css" />
     <Content Include="StyleSheets\StaffProfile.css" />
+    <Content Include="StyleSheets\login.css" />
+    <Content Include="StyleSheets\temp.css" />
     <Content Include="TAsProfiles.aspx" />
     <Content Include="AlumniPage.aspx" />
     <Content Include="AboutUsPage.aspx" />
@@ -312,6 +313,7 @@
     <Content Include="StyleSheets\InstructorViewCourse.css" />
     <Content Include="StyleSheets\studentActivities.css" />
     <Content Include="StaffProfile.aspx" />
+    <Content Include="temp.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -380,6 +382,12 @@
     </Compile>
     <Compile Include="AdminRemoveInstructor.aspx.designer.cs">
       <DependentUpon>AdminRemoveInstructor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminRemoveInstructorFromCourse.aspx.cs">
+      <DependentUpon>AdminRemoveInstructorFromCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminRemoveInstructorFromCourse.aspx.designer.cs">
+      <DependentUpon>AdminRemoveInstructorFromCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminRemoveStudentActivity.aspx.cs">
       <DependentUpon>AdminRemoveStudentActivity.aspx</DependentUpon>
@@ -509,6 +517,13 @@
     </Compile>
     <Compile Include="StaffProfile.aspx.designer.cs">
       <DependentUpon>StaffProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="temp.aspx.cs">
+      <DependentUpon>temp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="temp.aspx.designer.cs">
+      <DependentUpon>temp.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
