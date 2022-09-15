@@ -56,6 +56,8 @@
             <div class="navLabels" onmouseover="activDiv()">Student Activity</div>
             <div class="navLabels" onmouseover="otherDiv()">Other</div>
         </div>
+
+
         <div class="assignDiv">
             <label>Assign Instructor to Course</label>
         </div>
@@ -63,50 +65,11 @@
         <div class="courses" id="courses">
             <label class="selectCourseLabel">Select Course</label>
             <br />
-            <input type="text" id="courseInput" runat="server" name="courseInput" placeholder="search" />
-            <div class="coursesList">
-                <div class="courseItem">
-                    <div class="courseLabel">
-                        <label class="courseCode">(CSEN401)</label>
-                        <label class="courseName">Computer Programming Lab</label>
-                    </div>
-                    <asp:Button ID="button1" CssClass="select" runat="server" Text="Select" OnClientClick="selectedCourse();return false;"/>
-                </div>
-                <div class="courseItem">
-                    <div class="courseLabel">
-                        <label class="courseCode">(CSEN401)</label>
-                        <label class="courseName">Computer Programming Lab</label>
-                    </div>
-                    <asp:Button ID="button2" CssClass="select" runat="server" Text="Select" OnClientClick="selectedCourse();return false;"/>
-                </div>
-                <div class="courseItem">
-                    <div class="courseLabel">
-                        <label class="courseCode">(CSEN401)</label>
-                        <label class="courseName">Computer Programming Lab</label>
-                    </div>
-                    <asp:Button ID="button3" CssClass="select" runat="server" Text="Select" OnClientClick="selectedCourse();return false;"/>
-                </div>
-                <div class="courseItem">
-                    <div class="courseLabel">
-                        <label class="courseCode">(CSEN401)</label>
-                        <label class="courseName">Computer Programming Lab</label>
-                    </div>
-                    <asp:Button ID="button4" CssClass="select" runat="server" Text="Select" OnClientClick="selectedCourse();return false;"/>
-                </div>
-                <div class="courseItem">
-                    <div class="courseLabel">
-                        <label class="courseCode">(CSEN401)</label>
-                        <label class="courseName">Computer Programming Lab</label>
-                    </div>
-                    <asp:Button ID="button5" CssClass="select" runat="server" Text="Select" OnClientClick="selectedCourse();return false;"/>
-                </div>
-                <div class="courseItem">
-                    <div class="courseLabel">
-                        <label class="courseCode">(CSEN401)</label>
-                        <label class="courseName">Computer Programming Lab</label>
-                    </div>
-                    <asp:Button ID="button6" CssClass="select" runat="server" Text="Select" OnClientClick="selectedCourse();return false;"/>
-                </div>
+            <input type="text" id="courseInput" runat="server" name="courseInput" placeholder="search" /> search
+            <div class="coursesList" id="coursesList" runat="server">
+                
+                <br />
+                <br />
                 <div class="bottom">
 
                 </div>

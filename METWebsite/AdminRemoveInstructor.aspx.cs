@@ -91,6 +91,7 @@ namespace METWebsite
             {
                 id = reader.GetValue(0).ToString();
                 name = reader.GetValue(1).ToString();
+              
 
                 var item = new HtmlGenericControl("div");
                 item.Attributes.Add("class", "alumniItem");

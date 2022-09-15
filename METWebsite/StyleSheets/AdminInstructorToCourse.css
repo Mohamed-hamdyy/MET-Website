@@ -181,6 +181,8 @@ body {
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
     vertical-align: middle;
+    text-align:left;
+    padding-left:5%
 }
 
 .courseLabel {
@@ -200,6 +202,8 @@ body {
     border: none;
     width: 4vw;
     height: 1.8vw;
+    justify-content:right
+   
 }
 
     .select:hover {

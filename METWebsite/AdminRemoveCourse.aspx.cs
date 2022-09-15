@@ -12,6 +12,8 @@ namespace METWebsite
 {
     public partial class AdminRemoveCourse : System.Web.UI.Page
     {
+
+        string strcon = System.Configuration.ConfigurationManager.ConnectionStrings["MET"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             string strcon = System.Configuration.ConfigurationManager.ConnectionStrings["MET"].ConnectionString;
@@ -19,24 +21,105 @@ namespace METWebsite
             SqlConnection con = new SqlConnection(strcon);
             con.Open();
 
-            SqlCommand cmd1 = new SqlCommand("select * from course", con);
-            
+            SqlCommand cmd = new SqlCommand("select serial,code,name from course", con);
 
+            string id = ""; string name = "";string code = "";
             //SqlCommand cmd1 = new SqlCommand("select * from course", con);
-            
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-            while (reader1.Read())
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                var coursediv = new HtmlGenericControl("div");
-                var line = new HtmlGenericControl("br");
-                coursediv.Attributes.Add("class", "course");
-                var name = new HtmlGenericControl("p");
-                name.Attributes.Add("class", "coursename");
-                name.InnerHtml = reader1.GetValue(0).ToString() + " " + reader1.GetValue(1).ToString();
-                coursediv.Controls.Add(name);
-                courseremove.Controls.Add(coursediv);
-                courseremove.Controls.Add(line);
+                id = reader.GetValue(0).ToString();
+                name = reader.GetValue(2).ToString();
+                code = reader.GetValue(1).ToString();
+
+                var item = new HtmlGenericControl("div");
+                item.Attributes.Add("class", "alumniItem");
+
+                var labelDiv = new HtmlGenericControl("div");
+                labelDiv.Attributes.Add("class", "alumniLabelDiv");
+
+                var label = new HtmlGenericControl("label");
+                label.Attributes.Add("class", "alumniLabel");
+                label.InnerText =" [ "+code+" ] "+ name;
+
+                labelDiv.Controls.Add(label);
+
+                Button delete = new Button();
+                delete.ID = id;
+                delete.Attributes.Add("Class", "delete");
+                delete.Text = "Delete";
+                delete.Attributes.Add("runat", "server");
+                delete.Click += deleteCourse;
+
+                item.Controls.Add(labelDiv);
+                item.Controls.Add(delete);
+
+                courseRemove.Controls.Add(item);
             }
+            con.Close();
+        }
+        protected void deleteCourse(object sender, EventArgs e)
+        {
+            string strcon = System.Configuration.ConfigurationManager.ConnectionStrings["MET"].ConnectionString;
+            //create new sqlconnection and connection to database by using connection string from web.config file  
+            SqlConnection con = new SqlConnection(strcon);
+            con.Open();
+            SqlCommand cmd2 = new SqlCommand("deleteCourseS", con);
+            cmd2.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd2.Parameters.Add(new SqlParameter("@id", ((Control)sender).ID));
+            cmd2.ExecuteNonQuery();
+            con.Close();
+
+            Response.Redirect("AdminRemoveCourse.aspx");
+        }
+        protected void toSearchRes(object sender, ImageClickEventArgs e)
+        {
+            courseRemove.InnerHtml = "";
+            //create new sqlconnection and connection to database by using connection string from web.config file  
+            SqlConnection con = new SqlConnection(strcon);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("searchCourses", con);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            String search = searchInput.Text;
+            cmd.Parameters.Add(new SqlParameter("@name", search));
+
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            string id = ""; string name = "";string code = ""; 
+            while (reader.Read())
+            {
+                id = reader.GetValue(2).ToString();
+                name = reader.GetValue(1).ToString();
+                code = reader.GetValue(0).ToString();
+
+                var item = new HtmlGenericControl("div");
+                item.Attributes.Add("class", "alumniItem");
+
+                var labelDiv = new HtmlGenericControl("div");
+                labelDiv.Attributes.Add("class", "alumniLabelDiv");
+
+                var label = new HtmlGenericControl("label");
+                label.Attributes.Add("class", "alumniLabel");
+                label.InnerText =" [ "+ code+ " ] "+ name;
+
+                labelDiv.Controls.Add(label);
+
+                Button delete = new Button();
+                delete.ID = id;
+                delete.Attributes.Add("Class", "delete");
+                delete.Text = "Delete";
+                delete.Attributes.Add("runat", "server");
+                delete.Click += deleteCourse;
+
+                //search bar
+
+                item.Controls.Add(labelDiv);
+                item.Controls.Add(delete);
+
+               courseRemove.Controls.Add(item);
+            }
+            con.Close();
         }
 
     }
